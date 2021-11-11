@@ -5,6 +5,7 @@ cohorts = ['G','H', 'I', 'J']
 
 # Demographics columns
 demo_cols = ['SEQN',
+             'RIAGENDR',
              'RIDAGEYR', 
              'RIDRETH3', 
              'DMDEDUC2', 
@@ -17,6 +18,7 @@ demo_cols = ['SEQN',
 
 
 demo_names = ['unique id',
+              'gender',
               'age',
               'ethnicity',
               'education',
@@ -26,6 +28,10 @@ demo_names = ['unique id',
               'masked variance: stratum',
               'exam weight',
               'inverview weight']
+
+gender_dict = {1:   'Male',
+               2:   'Female',
+               '.': 'Missing'}
 
 ethnicity_dict = {1: 'Mexican American',
                   2: 'Other Hispanic',
@@ -54,8 +60,9 @@ marital_dict = {1:  'Married',
 interview_dict = {1: 'Interviewd only',
                   2: 'Both interviewed and MEC examined'}
 
-demo_cat = zip(demo_names[2:6],
-               [ethnicity_dict, education_dict, marital_dict, interview_dict])
+demo_cat = zip([demo_names[1]] + demo_names[3:7],
+               [gender_dict, ethnicity_dict, education_dict, 
+                               marital_dict, interview_dict])
 
 demo_fname = 'Demo_'
 
